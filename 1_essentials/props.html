@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 유효범위 시작-->
+    <div id="app">
+        <app-header v-bind:title='str'></app-header>
+    </div>
+    <!-- 유효범위 끝-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        var appHeader = {
+            template: '<h1>{{ data }}</h1>',
+            props: ['title']
+        }
+
+        new Vue({
+            el: '#app',
+            data: {
+                str: 'Props'
+            },
+            components: {
+                // '컴포넌트이름': '',
+                'app-header': {
+                    template: '<h1>Props</h1>'
+                }
+            }
+        });
+    </script>
+</body>
+</html>
