@@ -1,14 +1,21 @@
 <template>
   <div class="media-card">
     <div class="media-card-image">
-      <img :src="image" alt="">
+      <!-- <img v-bind:src="image" alt=""> -->
+      <!-- 이미지 슬롯 -->
+      <slot name="image"></slot>
     </div>
     <div class="media-card-content">
       <h4 class="media-card-heading">
-        {{ title }}
+        <!-- {{ title }} -->
+        <!-- 타이틀 슬롯 -->
+        <slot name="title"></slot>
       </h4>
+      <slot></slot>
       <div class="media-card-body">
-        <p>{{ contents }}</p>
+        <!-- <p>{{ contents }}</p> -->
+        <!-- 콘텐츠 슬롯 -->
+        <slot name="contents"></slot>
       </div>
     </div>
   </div>
@@ -16,7 +23,7 @@
 
 <script>
 export default {
-  props: ['image', 'title', 'contents']
+  // props: ['image', 'title', 'contents']
 }
 </script>
 
