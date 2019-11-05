@@ -35,6 +35,8 @@ export default {
         this.todoItems.push(value); 
       }
     },
+    // True! fetchItems() {},
+    // False! fetchItems : () => {},
     addTodoItem: function(item) {
       this.todoItems.push(item);
       localStorage.setItem(item, item);
