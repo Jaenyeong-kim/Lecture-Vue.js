@@ -6,6 +6,8 @@ import JobsView from '../views/JobsView.vue'
 import AskView from '../views/AskView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
+import store from '../store/index.js'
+
 Vue.use(VueRouter);
 
 // export default new VueRouter();
@@ -24,18 +26,46 @@ export default new VueRouter({
         // },
         {
             path: '/news',
-            component: NewsView
+            component: NewsView,
+            // beforeEnter(routeTo, routeFrom, next) {
+            beforeEnter(to, from, next) {
+                console.log('access');
+                store.dispatch('FETCH_JOBS')
+                    .then(() => next())
+                    .catch(error => console.log(error));
+
+                // var response = fetchNews();
+                // this.$store.commit('setNews', response.data);
+
+                // var isAdmin = true;
+                // if (isAdmin) {
+                //     next();
+                // }
+            }
         },
         // TODO 
         // URL : jobs, ask
         // 컴포넌트 이름 : JobsView, AskView
         {
             path: '/jobs',
-            component: JobsView
+            component: JobsView,
+            beforeEnter(to, from, next) {
+                console.log('access fetchJobs');
+                store.dispatch('FETCH_JOBS')
+                    .then(() => next())
+                    .catch(error => console.log(error));
+            }
+            // TODO: beforeEnter 사용, 페이지 진입 전에 데이터 요청
         },
         {
             path: '/ask',
-            component: AskView
+            component: AskView,
+            beforeEnter(to, from, next) {
+                console.log('access fetchAsk');
+                store.dispatch('FETCH_ASK')
+                    .then(() => next())
+                    .catch(error => console.log(error));
+            }
         },
         {
             path: '*',

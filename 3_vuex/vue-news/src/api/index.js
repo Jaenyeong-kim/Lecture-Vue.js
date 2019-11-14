@@ -22,7 +22,12 @@ function fetchAsk() {
     return instance.get('ask/1.json');
 }
 
+function fetchJobs() {
+    return instance.get('jobs/1.json');
+}
+
 export {
     fetchNews,
-    fetchAsk
+    fetchAsk,
+    fetchJobs
 };
