@@ -1,12 +1,13 @@
 <template>
   <div>
-    <header>
+    <!-- <header> -->
       <!-- <router-link to="/login">Login</router-link> ||  -->
       <!-- <a href="/login">Login</a> -->
-      <router-link to="/news">News</router-link> ||
+      <!-- <router-link to="/news">News</router-link> ||
       <router-link to="/jobs">Jobs</router-link> ||
       <router-link to="/ask">Ask</router-link>
-    </header>
+    </header> -->
+    <app-header></app-header>
     <main>
       <router-view></router-view>
     </main>
@@ -14,8 +15,15 @@
 </template>
 
 <script>
-export default {};
+import AppHeader from '@/components/AppHeader.vue';
+export default {
+	components: {
+		AppHeader,
+	},
+};
 </script>
 
-<style>
+<style scoped>
+/* 공통 CSS 적용 */
+@import './assets/css/common.css';
 </style>

@@ -1,14 +1,35 @@
 <template>
-  <div>
+  <!-- <div> -->
     <!-- <h1>Ask</h1>
       <div>
         {{ items }}
       </div> -->
-      <ul>
+      <!-- <ul>
         <li v-for="item in fetchedAsk" v-bind:key="item.id">
           {{  item.title }}
         </li>
-      </ul>
+      </ul> -->
+	  
+  <!-- </div> -->
+    <div>
+    <ul>
+      <li 
+        v-for="item in fetchedAsk" 
+        v-bind:key="item.id"
+        class="list-item">
+        <div class="points">{{ item.points }}</div>
+        <div>
+          <p class="title">{{ item.title }}</p>
+          <div>
+            <span>{{ item.time_ago }}</span>, 
+            <!-- <strong><span>{{ item.user }}</span></strong> -->
+			<router-link v-bind:to="'/user/' + item.user">
+				{{ item.user }}<!-- david --><!-- sarah -->
+			</router-link>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 

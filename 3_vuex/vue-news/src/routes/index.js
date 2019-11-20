@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 // import LoginView from '../views/LoginView.vue'
 import NewsView from '../views/NewsView.vue'
 import JobsView from '../views/JobsView.vue'
+import UserView from '../views/UserView.vue'
 import AskView from '../views/AskView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
@@ -49,23 +50,31 @@ export default new VueRouter({
         {
             path: '/jobs',
             component: JobsView,
-            beforeEnter(to, from, next) {
-                console.log('access fetchJobs');
-                store.dispatch('FETCH_JOBS')
-                    .then(() => next())
-                    .catch(error => console.log(error));
-            }
+            // beforeEnter(to, from, next) {
+            //     console.log('access fetchJobs');
+            //     store.dispatch('FETCH_JOBS')
+            //         .then(() => next())
+            //         .catch(error => console.log(error));
+            // }
             // TODO: beforeEnter 사용, 페이지 진입 전에 데이터 요청
         },
         {
             path: '/ask',
             component: AskView,
-            beforeEnter(to, from, next) {
-                console.log('access fetchAsk');
-                store.dispatch('FETCH_ASK')
-                    .then(() => next())
-                    .catch(error => console.log(error));
-            }
+            // beforeEnter(to, from, next) {
+            //     console.log('access fetchAsk');
+            //     store.dispatch('FETCH_ASK')
+            //         .then(() => next())
+            //         .catch(error => console.log(error));
+            // }
+        },
+        {
+            path: '/user/:userName',
+            component: UserView
+        },
+        {
+            path: '/item/:askId',
+            component: AskView
         },
         {
             path: '*',
