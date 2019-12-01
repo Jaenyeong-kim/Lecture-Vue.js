@@ -27,6 +27,7 @@ export default new VueRouter({
         // },
         {
             path: '/news',
+            name: 'news',
             component: NewsView,
             // beforeEnter(routeTo, routeFrom, next) {
             beforeEnter(to, from, next) {
@@ -49,6 +50,7 @@ export default new VueRouter({
         // 컴포넌트 이름 : JobsView, AskView
         {
             path: '/jobs',
+            name: 'jobs',
             component: JobsView,
             // beforeEnter(to, from, next) {
             //     console.log('access fetchJobs');
@@ -60,6 +62,7 @@ export default new VueRouter({
         },
         {
             path: '/ask',
+            name: 'ask',
             component: AskView,
             // beforeEnter(to, from, next) {
             //     console.log('access fetchAsk');

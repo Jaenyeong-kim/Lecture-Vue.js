@@ -17,7 +17,7 @@
   <!-- jquery나 vanilla js로 직접 화면 요소를 조작하는 경우 refs를 활용 -->
   <div id="app">
     <ul>
-      <li @click="removeItem">
+      <!-- <li @click="removeItem">
         <span>메뉴 1</span>
         <div class="child hide">
           메뉴 설명
@@ -32,6 +32,12 @@
       <li @click="removeItem">
         <span>메뉴 3</span>
         <div class="child hide">
+          메뉴 설명
+        </div>
+      </li> -->
+      <li v-for="(item, index) in items" @click="removeItem">
+        <span>{{ item }}</span>
+        <div class="child hide" ref="listItem">
           메뉴 설명
         </div>
       </li>

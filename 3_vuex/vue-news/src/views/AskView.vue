@@ -13,8 +13,12 @@
   <!-- </div> -->
     <div>
     <ul>
-      <li 
+      <!-- <li 
         v-for="item in fetchedAsk" 
+        v-bind:key="item.id"
+        class="list-item"> -->
+		 <li 
+        v-for="item in listItems" 
         v-bind:key="item.id"
         class="list-item">
         <div class="points">{{ item.points }}</div>
@@ -36,46 +40,50 @@
 <script>
 // import axios from 'axios';
 import { fetchAsk } from '../api/index.js';
+import DataFetchingMixin from '../mixins/DataFetchingMixin.js';
 
 export default {
+	mixins: [
+		DataFetchingMixin
+	],
 	data() {
 		return {
 			// items: [],
 			askItems: [],
 		};
 	},
-	computed: {
-		fetchedAsk() {
-			return this.$store.state.ask;
-		},
-	},
-	methods: {
-		// fetchItems() {
-		// 	fetchAsk()
-		// 		// .then(response => {
-		// 		// 	this.items = response.data;
-		// 		// })
-		// 		// 해당 객체(response) 안에 변수(data)에 바로 접근 가능
-		// 		.then(({ data }) => {
-		// 			this.items = data;
-		// 		})
-		// 		.catch(error => {});
-		// 	// const url = 'https://api.hnpwa.com/v0/ask/1.json';
-		// 	// axios
-		// 	// 	.get(url)
-		// 	// 	.then(response => {
-		// 	// 		console.log(response);
-		// 	// 		this.items = response.data;
-		// 	// 	})
-		// 	// 	.catch(error => {
-		// 	// 		console.log(error);
-		// 	// 	});
-		// },
-	},
-	created() {
-		// this.fetchItems();
-		this.$store.dispatch('FETCH_ASK');
-	},
+	// computed: {
+	// 	fetchedAsk() {
+	// 		return this.$store.state.ask;
+	// 	},
+	// },
+	// methods: {
+	// 	// fetchItems() {
+	// 	// 	fetchAsk()
+	// 	// 		// .then(response => {
+	// 	// 		// 	this.items = response.data;
+	// 	// 		// })
+	// 	// 		// 해당 객체(response) 안에 변수(data)에 바로 접근 가능
+	// 	// 		.then(({ data }) => {
+	// 	// 			this.items = data;
+	// 	// 		})
+	// 	// 		.catch(error => {});
+	// 	// 	// const url = 'https://api.hnpwa.com/v0/ask/1.json';
+	// 	// 	// axios
+	// 	// 	// 	.get(url)
+	// 	// 	// 	.then(response => {
+	// 	// 	// 		console.log(response);
+	// 	// 	// 		this.items = response.data;
+	// 	// 	// 	})
+	// 	// 	// 	.catch(error => {
+	// 	// 	// 		console.log(error);
+	// 	// 	// 	});
+	// 	// },
+	// },
+	// created() {
+	// 	// this.fetchItems();
+	// 	this.$store.dispatch('FETCH_ASK');
+	// },
 };
 </script>
 
