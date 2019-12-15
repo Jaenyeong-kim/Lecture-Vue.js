@@ -12,7 +12,10 @@
       <label for="nickname">NickName: </label>
       <input id="nickname" type="text" v-model="nickname" />
     </div> -->
-    <button type="submit">로그인</button>
+    <button type="submit" v-bind:disabled="!username && !password">로그인</button>
+    <p class="error-message" v-if="!isUsernameValid">
+      invalid username
+    </p>
     <p>{{ errorMessage }}</p>
   </form>
 </template>
@@ -28,9 +31,20 @@ function initData() {
     errorMessage: ''
   };
 }
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
 export default {
   data() {
     return initData();
+  },
+  computed: {
+    isUsernameValid() {
+      return validateEmail(this.username);
+    }
   },
   methods: {
     async submitForm() {
